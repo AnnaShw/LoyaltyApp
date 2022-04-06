@@ -1,7 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
-export default function ConvertPoints() {
+export default function Home() {
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -10,7 +10,7 @@ export default function ConvertPoints() {
       style={styles.container}
     >
       <View>
-        <Text>Convert Points Screen</Text>
+        <Text>Home Screen</Text>
       </View>
     </LinearGradient>
   );

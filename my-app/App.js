@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet ,View,Text} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import MainContainer from './navigation/mainContainerNav';
+import MainContainer from './navigation/mainContainer';
 
 export default function App() {
   return (
@@ -19,7 +19,6 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex:1,
   },
 });

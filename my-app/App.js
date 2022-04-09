@@ -1,9 +1,20 @@
+import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet ,View,Text} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import ProgrammName from "./components/ProgrammName";
 import MainContainer from './navigation/mainContainer';
+import { useState,useEffect } from "react";
 
 export default function App() {
+  const [showLogo, setShowLogo] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+    setShowLogo(false);
+    }, 2200);
+  }, []);
+
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -12,7 +23,8 @@ export default function App() {
       style={styles.container}
     >
       <StatusBar style="light" />
-      <MainContainer style={styles.navContainer}/>
+      {showLogo && <ProgrammName/>}
+      {!showLogo && <MainContainer style={styles.navContainer}/>}
     </LinearGradient>
   );
 }

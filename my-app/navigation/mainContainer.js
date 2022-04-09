@@ -8,10 +8,14 @@ import { LinearGradient } from "expo-linear-gradient";
 // Screens
 import ConvertPoints from "../Screens/ConvertPoints";
 import HomeScreen from "../Screens/Home";
+import SignInUpForm from "../Screens/SignInUpForm";
+import QrScanner from '../Screens/QrScaner';
 
 //Screen names
 const convertPointsName = "Convert points";
 const homeScreen = "home";
+const signInUpName = "Connect";
+const QR='QR';
 
 const Tab = createBottomTabNavigator();
 
@@ -26,7 +30,6 @@ export default function MainContainer() {
       <NavigationContainer>
         <Tab.Navigator
           initialRouteName={homeScreen}
-          
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
@@ -38,8 +41,15 @@ export default function MainContainer() {
                 iconName = focused
                   ? "git-compare-outline"
                   : "git-compare-outline";
+              } else if (rn === signInUpName) {
+                iconName = focused
+                  ? "ios-person"
+                  : "ios-person-outline";
+              }else if (rn === QR) {
+                iconName = focused
+                  ? "ios-camera-outline"
+                  : "ios-camera-outline";
               }
-              // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
             },
             tabBarActiveTintColor: "#f59842",
@@ -57,8 +67,26 @@ export default function MainContainer() {
             ],
           })}
         >
-          <Tab.Screen name={homeScreen} component={HomeScreen} options = {{headerShown: false}}/>
-          <Tab.Screen name={convertPointsName} component={ConvertPoints} options = {{headerShown: false}}/>
+          <Tab.Screen
+            name={homeScreen}
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Tab.Screen
+            name={convertPointsName}
+            component={ConvertPoints}
+            options={{ headerShown: false }}
+          />
+          <Tab.Screen
+            name={signInUpName}
+            component={SignInUpForm}
+            options={{ headerShown: false }}
+          />
+          <Tab.Screen
+            name={QR}
+            component={QrScanner}
+            options={{ headerShown: false }}
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </LinearGradient>

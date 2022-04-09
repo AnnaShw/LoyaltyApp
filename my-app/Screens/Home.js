@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, ScrollView } from "react-native";
+import { StyleSheet, View, Text} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import TotalPoints from "../components/TotalPoints";
 import PointsPerShop from "../components/PointsPerShop";
@@ -7,7 +7,7 @@ import SignInUpForm from '../Screens/SignInUpForm';
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [userExist, setUserExist] = useState(true);
+  const [userExist, setUserExist] = useState(false);
 
 
   return (
@@ -20,9 +20,7 @@ export default function Home() {
       {!userExist && (
         <View style={styles.points}>
           <TotalPoints>{2048}</TotalPoints>
-          <ScrollView>
             <PointsPerShop />
-          </ScrollView>
         </View>
       )}
       {userExist && <SignInUpForm/>}

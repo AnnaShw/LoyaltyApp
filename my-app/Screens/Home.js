@@ -5,6 +5,7 @@ import TotalPoints from "../components/TotalPoints";
 import PointsPerShop from "../components/PointsPerShop";
 import SignInUpForm from '../Screens/SignInUpForm';
 import { useState, useEffect } from "react";
+import { theme } from "../assets/theme";
 
 export default function Home() {
   const [userExist, setUserExist] = useState(false);
@@ -19,6 +20,7 @@ export default function Home() {
     >
       {!userExist && (
         <View style={styles.points}>
+          <Text style={styles.text}>Current total balance of points:</Text>
           <TotalPoints>{2048}</TotalPoints>
             <PointsPerShop />
         </View>
@@ -35,4 +37,10 @@ const styles = StyleSheet.create({
   points: {
     marginVertical: 100,
   },
+  text:{
+    fontSize:25,
+    color: theme.colors.orange,
+    fontWeight:'bold',
+    alignSelf:'center',
+  }
 });

@@ -1,6 +1,7 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, View, Text, FlatList } from "react-native";
-import { FlatGrid } from "react-native-super-grid";
+import ShopInfo from "./ShopInfo";
+
 
 export default function PointsPerShop() {
   const [items, setItems] = React.useState([
@@ -28,10 +29,7 @@ export default function PointsPerShop() {
         keyExtractor={(item) => item.id}
         spacing={10}
         renderItem={({ item }) => (
-          <View style={[styles.itemContainer, { backgroundColor: "red" }]}>
-            <Text style={styles.itemName}>{item.name}</Text>
-            <Text style={styles.itemCode}>{item.code}</Text>
-          </View>
+         <ShopInfo data={item}/>
         )}
         ContentContainerStyle={{
           flexGrow: 1,
@@ -44,20 +42,5 @@ export default function PointsPerShop() {
 const styles = StyleSheet.create({
   gridView: {
     marginTop: 10,
-  },
-  itemContainer: {
-    justifyContent: "flex-end",
-    borderRadius: 5,
-    padding: 10,
-  },
-  itemName: {
-    fontSize: 16,
-    color: "#fff",
-    fontWeight: "600",
-  },
-  itemCode: {
-    fontWeight: "600",
-    fontSize: 12,
-    color: "#fff",
   },
 });

@@ -18,14 +18,14 @@ export default function Home() {
       colors={["#1a1941", "#26246e", "#372f9d", "#4d37ce", "#693dff"]}
       style={styles.container}
     >
-      {!userExist && (
+      {userExist && (
         <View style={styles.points}>
           <Text style={styles.text}>Current total balance of points:</Text>
           <TotalPoints>{2048}</TotalPoints>
             <PointsPerShop />
         </View>
       )}
-      {userExist && <SignInUpForm/>}
+      {!userExist && <SignInUpForm/>}
     </LinearGradient>
   );
 }

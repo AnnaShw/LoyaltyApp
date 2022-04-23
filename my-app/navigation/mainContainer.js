@@ -1,7 +1,6 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-//import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
@@ -10,17 +9,23 @@ import { LinearGradient } from "expo-linear-gradient";
 import ConvertPoints from "../Screens/ConvertPoints";
 import HomeScreen from "../Screens/Home";
 import SignInUpForm from "../Screens/SignInUpForm";
-import QrScanner from '../Screens/QrScaner';
+import QrScanner from "../Screens/QrScaner";
+import SignUpScreen from "../Screens/SignUpScreen";
+import LogInScreen from "../Screens/LogInScreen";
 
 //Screen names
 const convertPointsName = "Convert points";
 const homeScreen = "home";
 const signInUpName = "Connect";
-const QR='QR';
+const signUpScreen="SignUp";
+const logInScreen="LogIn";
+const QR = "QR";
 
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
+  const [userLogIn, setUserLogIn] = React.useState(false);
+
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -43,13 +48,19 @@ export default function MainContainer() {
                   ? "git-compare-outline"
                   : "git-compare-outline";
               } else if (rn === signInUpName) {
-                iconName = focused
-                  ? "ios-person"
-                  : "ios-person-outline";
-              }else if (rn === QR) {
+                iconName = focused ? "ios-person" : "ios-person-outline";
+              } else if (rn === QR) {
                 iconName = focused
                   ? "ios-camera-outline"
                   : "ios-camera-outline";
+              }else if (rn === signUpScreen) {
+                iconName = focused
+                  ? "ios-create-outline"
+                  : "ios-create-outline";
+              }else if (rn === logInScreen) {
+                iconName = focused
+                  ?"md-log-in"
+                  :"md-log-in";
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -68,26 +79,44 @@ export default function MainContainer() {
             ],
           })}
         >
-          <Tab.Screen
-            name={homeScreen}
-            component={HomeScreen}
-            options={{ headerShown: false }}
-          />
-          <Tab.Screen
-            name={convertPointsName}
-            component={ConvertPoints}
-            options={{ headerShown: false }}
-          />
-          <Tab.Screen
-            name={signInUpName}
-            component={SignInUpForm}
-            options={{ headerShown: false }}
-          />
-          <Tab.Screen
-            name={QR}
-            component={QrScanner}
-            options={{ headerShown: false }}
-          />
+          {userLogIn && (
+            <React.Fragment>
+              <Tab.Screen
+                name={homeScreen}
+                component={HomeScreen}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name={convertPointsName}
+                component={ConvertPoints}
+                options={{ headerShown: false }}
+              />
+              <Tab.Screen
+                name={QR}
+                component={QrScanner}
+                options={{ headerShown: false }}
+              />
+            </React.Fragment>
+          )}
+          {!userLogIn && (
+            <React.Fragment>
+              <Tab.Screen
+              name={signInUpName}
+              component={SignInUpForm}
+              options={{ headerShown: false }}
+            />
+              <Tab.Screen
+              name={signUpScreen}
+              component={SignUpScreen}
+              options={{ headerShown: false }}
+            />
+            <Tab.Screen
+              name={logInScreen}
+              component={LogInScreen}
+              options={{ headerShown: false }}
+            />
+            </React.Fragment>
+          )}
         </Tab.Navigator>
       </NavigationContainer>
     </LinearGradient>

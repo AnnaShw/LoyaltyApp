@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { Card } from "react-native-shadow-cards";
+import { Card } from "react-native-paper";
 import { theme } from "../assets/theme";
 
 export default function ShopInfo(props) {

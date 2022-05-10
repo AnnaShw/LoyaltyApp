@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { Image } from "react-native";
 
+
 export default function ProgrammName() {
   return (
     <View style={styles.container}>
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   },
   img: {
     width: "85%",
-    height: 100,
+    height: 200,
     alignSelf: "center",
   },
 });

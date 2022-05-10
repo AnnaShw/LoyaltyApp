@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { theme } from "../assets/theme";
 
 export default function Home() {
-  const [userExist, setUserExist] = useState(false);
+  const [userExist, setUserExist] = useState(true);
 
 
   return (

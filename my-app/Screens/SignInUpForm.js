@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import Paragraph from "../components/Paragraph";
 import Header from "../components/Header";
 import Button from "../components/Button";
-import { View } from "react-native-web";
+import { View } from "react-native";
 import SignUpScreen from "./SignUpScreen";
 import LogInScreen from "./LogInScreen";
 import { useState, useEffect } from "react";

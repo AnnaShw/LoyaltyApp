@@ -24,7 +24,7 @@ const QR = "QR";
 const Tab = createBottomTabNavigator();
 
 export default function MainContainer() {
-  const [userLogIn, setUserLogIn] = React.useState(false);
+  const [userLogIn, setUserLogIn] = React.useState(true);
 
   return (
     <LinearGradient

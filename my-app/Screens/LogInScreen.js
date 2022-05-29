@@ -5,22 +5,39 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import { theme } from "../assets/theme";
+import { auth } from "../firebase/firebaseMain";
 
 
 export default function LoginScreen({ navigation }) {
+  console.log({ navigation });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
 
 
 
   const onLoginPressed = () => {
-    const emailError = emailValidator(email.value);
-    const passwordError = passwordValidator(password.value);
-    if (emailError || passwordError) {
-      setEmail({ ...email, error: emailError });
-      setPassword({ ...password, error: passwordError });
-      return;
-    }
+    console.log({ email, password });
+
+    auth.signInWithEmailAndPassword(email.value, password.value)
+      .then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        console.log({ user });
+
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+      });
+    // const emailError = emailValidator(email.value);
+    // const passwordError = passwordValidator(password.value);
+    // if (emailError || passwordError) {
+    //   setEmail({ ...email, error: emailError });
+    //   setPassword({ ...password, error: passwordError });
+    //   return;
+    // }
   };
 
   return (
@@ -59,7 +76,7 @@ export default function LoginScreen({ navigation }) {
       </Button>
       <View style={styles.row}>
         <Text>Don’t have an account? </Text>
-        <TouchableOpacity onPress={() => navigation.replace("RegisterScreen")}>
+        <TouchableOpacity onPress={() => navigation.navigate("RegisterScreen")}>
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
@@ -82,7 +99,7 @@ const styles = StyleSheet.create({
   },
   forgot: {
     fontSize: 20,
-    marginVertical:20,
+    marginVertical: 20,
     color: theme.colors.secondary,
   },
   link: {

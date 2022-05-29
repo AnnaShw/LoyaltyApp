@@ -51,8 +51,8 @@ export default function SignInUpForm({ state, descriptors, navigation }) {
           </View>
         </View>
       )}
-      {SignInModelOpen && <LogInScreen closeSignUp={SignUpModelOpen}/>}
-      {SignUpModelOpen && <SignUpScreen closeSignIn={SignInModelOpen}/>}
+      {SignInModelOpen && <LogInScreen navigation={navigation} closeSignUp={SignUpModelOpen}/>}
+      {SignUpModelOpen && <SignUpScreen navigation={navigation} closeSignIn={SignInModelOpen}/>}
     </LinearGradient>
   );
 }

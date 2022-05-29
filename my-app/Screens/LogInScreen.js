@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { SafeAreaView,TouchableOpacity, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 import Header from "../components/Header";
 import Button from "../components/Button";
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header>Welcome back</Header>
       <TextInput
         label="Email"
@@ -64,13 +64,13 @@ export default function LoginScreen({ navigation }) {
         errorText={password.error}
         secureTextEntry
       />
-      <View style={styles.forgotPassword}>
+      <SafeAreaView style={styles.forgotPassword}>
         <TouchableOpacity
           onPress={() => navigation.navigate("ResetPasswordScreen")}
         >
           <Text style={styles.forgot}>Forgot your password?</Text>
         </TouchableOpacity>
-      </View>
+      </SafeAreaView>
       <Button mode="contained" onPress={onLoginPressed} style={styles.button}>
         Login
       </Button>
@@ -80,7 +80,7 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.link}>Sign up</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

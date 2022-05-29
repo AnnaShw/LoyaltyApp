@@ -1,18 +1,15 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { SafeAreaView, StyleSheet, View, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import TotalPoints from "../components/TotalPoints";
 import PointsPerShop from "../components/PointsPerShop";
-import SignInUpForm from '../Screens/SignInUpForm';
+import SignInUpForm from "../Screens/SignInUpForm";
 import { useState, useEffect } from "react";
 import { theme } from "../assets/theme";
 import { auth } from "../firebase/firebaseMain";
 import { TouchableOpacity } from "react-native-web";
 
 export default function Home({ userLogIn }) {
-
-
-
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
@@ -21,18 +18,27 @@ export default function Home({ userLogIn }) {
       style={styles.container}
     >
       {userLogIn && (
-        <View style={styles.points}>
+        <SafeAreaView style={styles.points}>
           <Text style={styles.text}>Current total balance of points:</Text>
           <TotalPoints>{2048}</TotalPoints>
-          <TouchableOpacity style={{ backgroundColor: 'white' }} onPress={() => {
-            auth.signOut().then(() => {
-              // Sign-out successful.
-            }).catch((error) => {
-              // An error happened.
-            });
-          }}> <Text style={{ color: 'green' }}  >LOGOUT</Text>  </    TouchableOpacity>
+          <TouchableOpacity
+            style={{ backgroundColor: "white" }}
+            onPress={() => {
+              auth
+                .signOut()
+                .then(() => {
+                  // Sign-out successful.
+                })
+                .catch((error) => {
+                  // An error happened.
+                });
+            }}
+          >
+            {" "}
+            <Text style={styles.logOut}>LOGOUT</Text>{" "}
+          </TouchableOpacity>
           <PointsPerShop />
-        </View>
+        </SafeAreaView>
       )}
       {!userLogIn && <SignInUpForm />}
     </LinearGradient>
@@ -46,10 +52,15 @@ const styles = StyleSheet.create({
   points: {
     marginVertical: 100,
   },
+  logOut: {
+    color: theme.colors.text,
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
   text: {
     fontSize: 25,
     color: theme.colors.orange,
-    fontWeight: 'bold',
-    alignSelf: 'center',
-  }
+    fontWeight: "bold",
+    alignSelf: "center",
+  },
 });

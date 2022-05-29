@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import { theme } from "../assets/theme";
+import { auth } from "../firebase/firebaseMain";
 
 
 export default function SignUpScreen({ navigation }) {
@@ -13,18 +14,30 @@ export default function SignUpScreen({ navigation }) {
   const [password, setPassword] = useState({ value: "", error: "" });
 
   const SignUpPressed = (props) => {
-    const nameError = nameValidator(name.value);
-    const emailError = emailValidator(email.value);
-    const passwordError = passwordValidator(password.value);
+    console.log({ name, email, password });
+    auth.createUserWithEmailAndPassword(email.value, password.value)
+      .then((userCredential) => {
+        // Signed in 
+        var user = userCredential.user;
+        console.log({ user });
+        // ...
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ..
+      });
+   
+    // const nameError = nameValidator(name.value);
+    // const emailError = emailValidator(email.value);
+    // const passwordError = passwordValidator(password.value);
 
-
-
-    if (emailError || passwordError || nameError) {
-      setName({ ...name, error: nameError });
-      setEmail({ ...email, error: emailError });
-      setPassword({ ...password, error: passwordError });
-      return;
-    }
+    // if (emailError || passwordError || nameError) {
+    //   setName({ ...name, error: nameError });
+    //   setEmail({ ...email, error: emailError });
+    //   setPassword({ ...password, error: passwordError });
+    //   return;
+    // }
   };
 
   return (

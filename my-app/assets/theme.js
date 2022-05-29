@@ -9,7 +9,7 @@ export const theme = {
     secondary: "#27d2e6",
     error: "red",
     orange: "#fca547",
-    cyan: "#0BC5EA",
+    cyan: "#0bc5ea5e",
     gray: "#F7FAFC",
   },
 };

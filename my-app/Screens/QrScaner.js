@@ -6,8 +6,7 @@ import { LinearGradient } from "expo-linear-gradient";
 export default function QrScaner() {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
-  const [shopName, setshopName] = useState("");
-  const [newPoints, setnewPoints] = useState(0);
+
   useEffect(() => {
     //for camera access
     (async () => {
@@ -19,10 +18,9 @@ export default function QrScaner() {
     //for the scan.
     setScanned(true);
     alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-    const scanned=data.split(" ");
-    setshopName(scanned[0]);
-    setnewPoints(scanned[1]);
-    console.log(newPoints);
+    const scannedData=data.split(" ");
+    
+
   };
   if (hasPermission === null) {
     return <Text>Requesting for camera permission</Text>;

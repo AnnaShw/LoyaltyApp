@@ -7,7 +7,9 @@ import ShopInfo from "./ShopInfo";
 export default function PointsPerShop() {
   const [shopsData, setShopsData] = useState([]);
 
+
   useEffect(() => {
+    //Here fetch data from db and store it in shops data that is array of objects.Where each object is specific shop
     db.collection("Shops").onSnapshot((snapshot) => {
       let docs = snapshot.docs;
       let temp1 = docs.map((doc) => [helpFunc(doc)]);

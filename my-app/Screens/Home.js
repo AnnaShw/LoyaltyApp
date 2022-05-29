@@ -19,6 +19,7 @@ export default function Home({ userLogIn }) {
     >
       {userLogIn && (
         <SafeAreaView style={styles.points}>
+          <Text style={styles.logOut}>LOGOUT</Text>{" "}
           <Text style={styles.text}>Current total balance of points:</Text>
           <TotalPoints>{2048}</TotalPoints>
           <TouchableOpacity
@@ -33,11 +34,8 @@ export default function Home({ userLogIn }) {
                   // An error happened.
                 });
             }}
-          >
-            {" "}
-            <Text style={styles.logOut}>LOGOUT</Text>{" "}
-          </TouchableOpacity>
-          <PointsPerShop />
+          ></TouchableOpacity>
+          <PointsPerShop /> 
         </SafeAreaView>
       )}
       {!userLogIn && <SignInUpForm />}
@@ -50,12 +48,19 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   points: {
-    marginVertical: 100,
+    marginVertical: 5,
   },
   logOut: {
-    color: theme.colors.text,
+    color: theme.colors.gray,
     fontWeight: "bold",
     alignSelf: "center",
+    backgroundColor: "#beefee9c",
+    marginVertical: 30,
+    textAlign: "center",
+    padding: 10,
+    width:'100%',
+    borderRadius: 10,
+    borderWidth: 1,
   },
   text: {
     fontSize: 25,

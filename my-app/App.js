@@ -7,7 +7,7 @@ import MainContainer from "./navigation/mainContainer";
 import { useState, useEffect, useRef } from "react";
 
 export default function App() {
-  const [showLogo, setShowLogo] = useState(false);
+  const [showLogo, setShowLogo] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {

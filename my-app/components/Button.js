@@ -20,7 +20,7 @@ export default function Button({ mode, style, ...props }) {
 
 const styles = StyleSheet.create({
   button: {
-    width: "fit-content",
+    width: 150,
     marginVertical: 10,
     paddingVertical: 2,
     marginVertical: 80,

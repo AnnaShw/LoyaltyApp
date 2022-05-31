@@ -31,23 +31,25 @@ export default function PointsPerShop() {
     return shops;
   };
   return (
-    <View style={styles.view}>
-      {shopsData && <FlatList
+    <SafeAreaView style={styles.view}>
+      <FlatList
         data={shopsData}
         style={styles.gridView}
         numColumns={2}
         keyExtractor={(item) => Math.random()}
         spacing={10}
         renderItem={({ item }) => <ShopInfo data={item} />}
-      />}
-    </View>
+        ContentContainerStyle={{
+          flexGrow: 1,
+        }}
+      />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   gridView: {
     marginTop: 10,
-    width:'100%',
   },
   view:{
     alignItems: "center",
